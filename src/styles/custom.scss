@@ -1,0 +1,18 @@
+// src/styles/custom.scss
+
+// Importa las variables de Bootstrap
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+// Define tus variables personalizadas
+$primary: #007bff;
+$secondary: #6c757d;
+$success: #28a745;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f8f9fa;
+$black: #0000;
+
+// Importa el resto de Bootstrap
+@import 'bootstrap/dist/css/bootstrap.min.css';
