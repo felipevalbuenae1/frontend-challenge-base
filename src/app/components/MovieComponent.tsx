@@ -26,7 +26,6 @@ const MovieComponent = ({ movie }) => {
               />
             </div>
             <p>Release Date: {movie.release_date}</p>
-      <h2>Movie Title</h2>
       <MarkFavorite movieId={movie.id} />
     </>
   );

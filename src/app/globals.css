@@ -6,3 +6,39 @@
   font-weight: 400!important;
   font-style: normal;
 }
+
+.modal-content {
+  background-color: #ffffff21 !important;
+  backdrop-filter: blur(10px);
+}
+
+.modalNavTabs .nav-link {
+  background-color: #262626;
+}
+
+.containerTabs {
+  position: absolute;
+  width: auto!important;
+  justify-content: center;
+  display: flex;
+}
+@media screen and (min-width: 992px) {
+  .img-login {
+    max-width: inherit;
+    min-width: 350px;
+  }
+
+  .containerFormLogin {
+    margin: auto!important;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .img-login {
+    max-width: '-webkit-fill-available' ;
+  }
+
+  .containerFormLogin {
+    margin-top: 55px!important;
+  }
+}

@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { Carousel, Col, Container, Row } from 'react-bootstrap';
 import axios from 'axios';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
+import MarkFavorite from '../MarkFavorite';
 
 const MainBanner = () => {
   const [banners, setBanners] = useState<{ id: number; title: string; backdrop_path: string; overview: string; vote_average:number }[]>([]);
@@ -44,6 +45,7 @@ const MainBanner = () => {
                   <p>{banner.overview}</p>
                 </Col>
                 <Col>
+                <MarkFavorite movieId={banner.id} />
                   <div style={{ width: 92, height: 92, position: 'absolute', bottom: '30px', display: 'flex', right: 0 }}>
                     <CircularProgressbar
                       value={Math.ceil(banner.vote_average * 10)}

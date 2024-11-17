@@ -4,7 +4,7 @@
 import { useRouter } from 'next/navigation';
 import AuthContext from '../../context/AuthContext';
 import { useState, useContext } from 'react';
-import { Modal, Tab, Nav, Button, Form } from 'react-bootstrap';
+import { Modal, Tab, Nav, Button, Form, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
 const AuthModal = ({ isOpen, onClose }) => {
@@ -44,45 +44,65 @@ const AuthModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <Modal show={isOpen} onHide={onClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>{activeTab === 'login' ? 'Login' : 'Register'}</Modal.Title>
+    <Modal show={isOpen} onHide={onClose} size='xl' style={{}}>
+      <Modal.Header style={{display: 'flex', flexDirection: 'row-reverse', justifyContent: 'flex-end', color: 'white'}} closeButton>
+        Back
       </Modal.Header>
       <Modal.Body>
         <Tab.Container activeKey={activeTab} onSelect={(k) => k && setActiveTab(k)}>
-          <Nav variant="tabs">
-            <Nav.Item>
-              <Nav.Link eventKey="login">Login</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="register">Register</Nav.Link>
-            </Nav.Item>
-          </Nav>
+          <Container>
+            <Row>
+              <Col className='containerTabs'>
+              <Nav variant="tabs" className='modalNavTabs'>
+                <Nav.Item>
+                  <Nav.Link eventKey="login">Login</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="register">Register</Nav.Link>
+                </Nav.Item>
+              </Nav>
+              </Col>
+              <Col>
+
+              </Col>
+            </Row>
+          </Container>
+         
           <Tab.Content>
             <Tab.Pane eventKey="login">
-              <Form onSubmit={handleLoginSubmit}>
-                <Form.Group className="mb-3" controlId="loginIdentifier">
-                  <Form.Label>Username or Email</Form.Label>
-                  <Form.Control
-                    type="text"
-                    value={identifier}
-                    onChange={(e) => setIdentifier(e.target.value)}
-                    required
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="loginPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                  Login
-                </Button>
-              </Form>
+              <Container>
+                <Row>
+                  <Col className='containerFormLogin'>
+                    <Form onSubmit={handleLoginSubmit}>
+                  <Form.Group className="mb-3" controlId="loginIdentifier">
+                    <Form.Label>Username or Email</Form.Label>
+                    <Form.Control
+                      type="text"
+                      value={identifier}
+                      onChange={(e) => setIdentifier(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="loginPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                  <Button variant="primary" type="submit">
+                    Login
+                  </Button>
+                    </Form>
+                  </Col>
+                  <Col style={{backgroundColor: 'black', borderRadius: '5px'}}>
+                    <h2>Welcome back!</h2>
+                    <img className='img-login' src="/login.png" alt="Logo" style={{}} />
+                  </Col>
+                </Row>
+              </Container>
             </Tab.Pane>
             <Tab.Pane eventKey="register">
               <Form onSubmit={handleRegisterSubmit}>
