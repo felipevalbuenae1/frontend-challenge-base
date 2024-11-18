@@ -2,6 +2,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+
 import { Carousel, Col, Container, Row } from 'react-bootstrap';
 import axios from 'axios';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
@@ -44,9 +45,10 @@ const MainBanner = () => {
                   <h3>{banner.title}</h3>
                   <p>{banner.overview}</p>
                 </Col>
-                <Col>
-                <MarkFavorite movieId={banner.id} />
-                  <div style={{ width: 92, height: 92, position: 'absolute', bottom: '30px', display: 'flex', right: 0 }}>
+                <Col style={{display: 'flex', float: 'inline-end', justifyContent: 'flex-end'}}>
+                
+                <MarkFavorite movieId={banner.id}/>
+                  <div style={{ width: 92, display: 'flex', float: 'inline-end', margin: 0, marginLeft: '50px'}}>
                     <CircularProgressbar
                       value={Math.ceil(banner.vote_average * 10)}
                       text={`${Math.ceil(banner.vote_average * 10)}%`}  

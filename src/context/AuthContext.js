@@ -1,13 +1,28 @@
 // src/context/AuthContext.js
 "use client";
 
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const [authToken, setAuthToken] = useState(null);
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem('authToken');
+    console.log('Token:', token);
+    if (token) {
+      setAuthToken(token);
+    }
+
+    const user = localStorage.getItem('user');
+    console.log('User:', user);
+    if (user) {
+      setUser(user);
+    }
+  }, []);
 
   const login = async (usernameOrEmail, password) => {
     try {
@@ -18,6 +33,7 @@ export const AuthProvider = ({ children }) => {
       const { token, userId } = response.data;
       console.log('Login successful:', response.data);
       localStorage.setItem('authToken', token);
+      localStorage.setItem('user', JSON.stringify({ usernameOrEmail, userId }));
       setUser({ usernameOrEmail, userId });
     } catch (error) {
       console.error('Error during login:', error);
@@ -26,6 +42,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('authToken');
+    localStorage.removeItem('user');
     setUser(null);
   };
 
@@ -33,7 +50,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const token = localStorage.getItem('authToken');
       await axios.post(`http://localhost:3000/favorites/${movieId}`, {
-        userId: user.userId
+        userId: JSON.parse(user).userId
       }, {
         headers: {
           Authorization: `Bearer ${token}`

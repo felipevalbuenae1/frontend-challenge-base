@@ -11,6 +11,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import MainBanner from './components/Header/MainBanner';
 import GenreCarousel from './components/GenreCarousel';
 import FilterBar from './components/FilterBar';
+import { Col, Container, Row } from 'react-bootstrap';
 
 const Home = () => {
   // const [genres, setGenres] = useState<{ id: number; name: string; count: number }[]>([]);
@@ -88,14 +89,23 @@ const Home = () => {
 
   return (
     <>
-    <MainBanner />
-    <FilterBar onSearch={handleSearch} onGenreSelect={handleGenreSelect} />
-      <div>
-        <h1>Movies by Genre</h1>
-        {categories.map((genre) => (
-          <GenreCarousel endpoint={genre} />
-        ))}
-      </div>
+    <MainBanner/>
+    <Container className='bg-gray' style={{color: 'white'}}>
+      <Row>
+        <Col xs lg="2" className='pt-5 bg-gray-filter'>
+          <FilterBar onSearch={handleSearch} onGenreSelect={handleGenreSelect} />
+        </Col>
+        <Col lg='10' className='pt-5 p-5'>
+        <div>
+          {categories.map((genre) => (
+            <GenreCarousel endpoint={genre} />
+          ))}
+        </div>
+        </Col>
+      </Row>
+    </Container>
+    
+      
     </>
   );
 };

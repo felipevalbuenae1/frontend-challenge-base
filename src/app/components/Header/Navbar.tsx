@@ -28,7 +28,9 @@ const AppNavbar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto inter-regular">
             <Nav.Link className='p-4' href="/">Popular</Nav.Link>
-            <Nav.Link className='p-4' href="/about">Favorites</Nav.Link>
+            {user && (
+            <Nav.Link className='p-4' href="/favorites">Favorites</Nav.Link>
+          )}
           </Nav>
           <Nav>
             {user ? (

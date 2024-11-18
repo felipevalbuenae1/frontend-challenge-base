@@ -42,7 +42,7 @@ const MovieDetails = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{color: 'white'}}>
       <img
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.title}

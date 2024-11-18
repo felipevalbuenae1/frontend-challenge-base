@@ -8,7 +8,7 @@ import 'react-multi-carousel/lib/styles.css';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import MovieComponent from './MovieComponent';
-
+import './components.module.css'
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
@@ -52,8 +52,8 @@ const GenreCarousel = ({ endpoint }) => {
   }, [endpoint]);
 
   return (
-    <div>
-      <h2>{endpoint}</h2>
+    <div className='mb-5 p-3'>
+      <h2 className='p-3 first-letter-genre'>{endpoint}</h2>
       <Carousel
         responsive={responsive}
         partialVisible={true}

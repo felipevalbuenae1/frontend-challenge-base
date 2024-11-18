@@ -16,12 +16,19 @@
   background-color: #262626;
 }
 
-.containerTabs {
-  position: absolute;
-  width: auto!important;
-  justify-content: center;
-  display: flex;
+.modalNavTabs {
+  border: 0;
 }
+
+
+.first-letter-genre::first-letter {
+  text-transform: uppercase;
+}
+
+body {
+  background-color: #000000!important;
+}
+
 @media screen and (min-width: 992px) {
   .img-login {
     max-width: inherit;
@@ -31,14 +38,31 @@
   .containerFormLogin {
     margin: auto!important;
   }
+
+  .containerTabs {
+    position: relative;
+    width: auto!important;
+    justify-content: center;
+    display: flex;
+    top: 110px;
+  }
 }
 
 @media screen and (max-width: 992px) {
   .img-login {
-    max-width: '-webkit-fill-available' ;
+    max-width: -webkit-fill-available ;
+    margin-top: -75px;
   }
 
   .containerFormLogin {
     margin-top: 55px!important;
   }
+
+  .containerTabs {
+    position: relative;
+    width: auto!important;
+    justify-content: center;
+    display: flex;
+  }
+
 }

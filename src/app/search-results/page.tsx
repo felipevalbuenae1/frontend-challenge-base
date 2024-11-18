@@ -9,6 +9,8 @@ import 'react-circular-progressbar/dist/styles.css';
 import styles from './SearchResults.module.css'; // Import CSS module for styling
 import MainBanner from '../components/Header/MainBanner';
 import FilterBar from '../components/FilterBar';
+import { Col, Container, Row } from 'react-bootstrap';
+import MovieComponent from '../components/MovieComponent';
 
 const SearchResults = () => {
   interface Movie {
@@ -65,36 +67,26 @@ const SearchResults = () => {
   return (
     <>
     <MainBanner />
-    <FilterBar onSearch={handleSearch} onGenreSelect={handleGenreSelect} />
-    <div>
+
+    <Container className='bg-gray' style={{color: 'white'}}>
+      <Row>
+        <Col xs lg="2" className='pt-5'>
+          <FilterBar onSearch={handleSearch} onGenreSelect={handleGenreSelect} />
+        </Col>
+        <Col lg='10' className='pt-5 p-5'>
+        <div>
       <h1>Search Results for "{query}"</h1>
       <div className={styles.grid}>
         {movies.map(movie => (
-          <div key={movie.id} className={styles.card} onClick={() => handleMovieClick(movie.id)}>
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-              className={styles.image}
-            />
-            <h3>{movie.title}</h3>
-            <div style={{ width: 50, height: 50 }}>
-              <CircularProgressbar
-                value={Math.ceil(movie.vote_average * 10)}
-                text={`${Math.ceil(movie.vote_average * 10)}%`}
-                styles={buildStyles({
-                  textSize: '30px',
-                  pathColor: `rgba(62, 152, 199, ${movie.vote_average / 10})`,
-                  textColor: '#f88',
-                  trailColor: '#d6d6d6',
-                  backgroundColor: '#3e98c7',
-                })}
-              />
-            </div>
-            <p>Release Date: {movie.release_date}</p>
-          </div>
+          <MovieComponent key={movie.id} movie={movie} />
         ))}
       </div>
     </div>
+        </Col>
+      </Row>
+    </Container>
+
+    
     </>
     
   );
