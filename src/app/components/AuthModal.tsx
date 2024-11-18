@@ -30,7 +30,7 @@ const AuthModal = ({ isOpen, onClose }) => {
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/auth/signup', {
+      await axios.post('https://backend-challenge-base.vercel.app/auth/signup', {
         username,
         email: identifier,
         password

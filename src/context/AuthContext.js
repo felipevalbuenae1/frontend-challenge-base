@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (usernameOrEmail, password) => {
     try {
-      const response = await axios.post('http://localhost:3000/auth/login', {
+      const response = await axios.post('https://backend-challenge-base.vercel.app/auth/login', {
         usernameOrEmail,
         password
       });
@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }) => {
   const markFavorite = async (movieId) => {
     try {
       const token = localStorage.getItem('authToken');
-      await axios.post(`http://localhost:3000/favorites/${movieId}`, {
+      await axios.post(`https://backend-challenge-base.vercel.app/favorites/${movieId}`, {
         userId: JSON.parse(user).userId
       }, {
         headers: {

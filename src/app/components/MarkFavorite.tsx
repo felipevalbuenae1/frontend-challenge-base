@@ -12,7 +12,7 @@ const MarkFavorite = ({ movieId }) => {
     const checkIfFavorite = async () => {
       if (user) {
         try {
-          const response = await axios.get(`http://localhost:3000/favorites/${JSON.parse(user).userId}`);
+          const response = await axios.get(`https://backend-challenge-base.vercel.app/favorites/${JSON.parse(user).userId}`);
           const favorites = response.data;
           
           const isFavorite = favorites.some(favorite => favorite.movie_id === movieId);
@@ -36,7 +36,7 @@ const MarkFavorite = ({ movieId }) => {
       alert('Movie marked as favorite!');
 
       // Consultar todos los favoritos del usuario
-      const response = await axios.get(`http://localhost:3000/favorites/${JSON.parse(user).userId}`);
+      const response = await axios.get(`https://backend-challenge-base.vercel.app/favorites/${JSON.parse(user).userId}`);
       const favorites = response.data;
 
       // Verificar si la película marcada está en la lista de favoritos
@@ -49,13 +49,13 @@ const MarkFavorite = ({ movieId }) => {
 
   const handleUnmarkFavorite = async () => {
     try {
-      await axios.delete(`http://localhost:3000/favorites/${movieId}`, {
+      await axios.delete(`https://backend-challenge-base.vercel.app/favorites/${movieId}`, {
         data: { userId: JSON.parse(user).userId }
       });
       alert('Movie unmarked as favorite!');
 
       // Consultar todos los favoritos del usuario
-      const response = await axios.get(`http://localhost:3000/favorites/${JSON.parse(user).userId}`);
+      const response = await axios.get(`https://backend-challenge-base.vercel.app/favorites/${JSON.parse(user).userId}`);
       const favorites = response.data;
 
       // Verificar si la película desmarcada ya no está en la lista de favoritos
